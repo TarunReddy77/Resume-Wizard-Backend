@@ -1,0 +1,193 @@
+{
+  "personal_info": {
+    "name": "Tarun Reddy",
+    "location": "Boston, MA",
+    "phone": "(857)-693-4743",
+    "email": "thandu.t@northeastern.edu",
+    "linkedin": "www.linkedin.com/in/tarun-reddy"
+  },
+  "educations": [
+    {
+      "title_contents": {
+        "type": "education",
+        "university": "Khoury College of Computer Sciences, Northeastern University",
+        "location": "Boston, MA"
+      },
+      "subtitle_contents": "Master of Science in Artificial Intelligence (GPA 3.95/4)",
+      "timeline": "Expected Dec 2024",
+      "bullet_points": [
+        "Courses: Large Language Models, AI for Human Computer Interaction, Deep Learning, Machine Learning, Natural Language Processing",
+        "Roles: Head Teaching Assistant for Graduate Level Natural Language Processing"
+      ]
+    },
+    {
+      "title_contents": {
+        "type": "education",
+        "university": "National Institute of Technology",
+        "location": "India"
+      },
+      "subtitle_contents": "Bachelor of Technology in Electronics and Communication Engineering (Gold Medalist)",
+      "timeline": "Jun 2020",
+      "bullet_points": [
+        "Roles: Class Representative, Training and Placement Coordinator, Head of Electronics Club"
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "title_contents": {
+        "type": "experience",
+        "company": "Tesla",
+        "role": "Machine Learning Engineer - Autonomous Driving",
+        "location": "Palo Alto, CA",
+        "additional_info": "Contributed to enhancing Tesla's autopilot system for improved safety measures"
+      },
+      "subtitle_contents": null,
+      "timeline": "June 2022 - Present",
+      "bullet_points": [
+        "Led the integration of reinforcement learning algorithms into Tesla's self-driving models, which improved real-time decision-making by 15%, enhancing safety metrics.",
+        "Developed a sophisticated object recognition module using YOLO and OpenCV that reduced the error rate by 12% in detecting pedestrians and cyclists in urban environments.",
+        "Collaborated with cross-functional teams to implement and optimize Simultaneous Localization and Mapping (SLAM) techniques, significantly refining the vehicle's positioning accuracy."
+      ]
+    },
+    {
+      "title_contents": {
+        "type": "experience",
+        "company": "Waymo",
+        "role": "AI Research Intern - Self-Driving Technology",
+        "location": "Mountain View, CA",
+        "additional_info": "Focused on increasing the precision and reliability of autonomous vehicle algorithms"
+      },
+      "subtitle_contents": null,
+      "timeline": "May 2021 - Aug 2021",
+      "bullet_points": [
+        "Implemented and validated deep neural network models for lane detection, which increased the accuracy of trajectory prediction by 10%.",
+        "Assisted in integrating sensor fusion technology combining LIDAR and radar data streams, which resulted in a 20% improvement in obstacle detection efficiency.",
+        "Enhanced the data augmentation pipeline with novel image processing techniques leading to a 30% reduction in data preprocessing time."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Machine Learning",
+      "tools": [
+        "TensorFlow",
+        "PyTorch",
+        "scikit-learn",
+        "Keras",
+        "XGBoost"
+      ]
+    },
+    {
+      "category": "Deep Learning",
+      "tools": [
+        "Convolutional Neural Networks (CNNs)",
+        "Recurrent Neural Networks (RNNs)",
+        "Long Short-Term Memory (LSTM)"
+      ]
+    },
+    {
+      "category": "Programming Languages",
+      "tools": [
+        "Python",
+        "C++",
+        "JavaScript"
+      ]
+    },
+    {
+      "category": "Automotive Technology",
+      "tools": [
+        "OpenCV",
+        "ROS (Robot Operating System)",
+        "CARLA Simulator"
+      ]
+    },
+    {
+      "category": "Data Analysis",
+      "tools": [
+        "Pandas",
+        "NumPy",
+        "MATLAB"
+      ]
+    },
+    {
+      "category": "Computer Vision",
+      "tools": [
+        "OpenCV",
+        "TensorFlow Object Detection",
+        "YOLO (You Only Look Once)"
+      ]
+    },
+    {
+      "category": "Software Development",
+      "tools": [
+        "Git",
+        "Docker",
+        "Agile methodologies"
+      ]
+    },
+    {
+      "category": "Sensor Technologies",
+      "tools": [
+        "LiDAR",
+        "RADAR",
+        "GPS"
+      ]
+    },
+    {
+      "category": "Cloud Computing",
+      "tools": [
+        "AWS",
+        "Google Cloud Platform (GCP)",
+        "Microsoft Azure"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title_contents": {
+        "type": "project",
+        "domain": "Autonomous Driving",
+        "name": "Perception Module Optimization for Self-Driving Cars",
+        "additional_info": ""
+      },
+      "subtitle_contents": null,
+      "timeline": "June 2023 - August 2023",
+      "bullet_points": [
+        "Enhanced the perception module of an autonomous vehicle system by integrating advanced deep learning frameworks such as YOLOv5 and Faster R-CNN, achieving a 20% increase in object detection accuracy.",
+        "Implemented sensor fusion techniques combining LiDAR and camera data using Kalman Filters, leading to a more robust environmental mapping and decreasing false positive rates by 15%.",
+        "Performed thorough hyperparameter tuning and model optimization, reducing inference time by 30%, thereby improving the real-time decision-making capabilities of the vehicle."
+      ]
+    },
+    {
+      "title_contents": {
+        "type": "project",
+        "domain": "Reinforcement Learning",
+        "name": "Adaptive Driving Policy with RL for Self-Driving",
+        "additional_info": ""
+      },
+      "subtitle_contents": null,
+      "timeline": "February 2023 - May 2023",
+      "bullet_points": [
+        "Developed a reinforcement learning model using Proximal Policy Optimization (PPO) for adaptive driving policy, improving lane-keeping performance by 25% under varied weather conditions.",
+        "Simulated real-world driving environments using CARLA simulator to train and evaluate model efficiency, reducing training time by 40% through optimized environmental settings and distributed computing.",
+        "Integrated a dynamic reward system focusing on safe distance maintenance and smoother trajectory control, resulting in a measurable improvement in passenger comfort scores."
+      ]
+    },
+    {
+      "title_contents": {
+        "type": "project",
+        "domain": "Computer Vision",
+        "name": "Real-Time Lane Detection with Deep Neural Networks",
+        "additional_info": ""
+      },
+      "subtitle_contents": null,
+      "timeline": "September 2022 - December 2022",
+      "bullet_points": [
+        "Designed a convolutional neural network model for real-time lane detection, surpassing conventional Hough Transform techniques in both accuracy and processing speed by 30%.",
+        "Incorporated data augmentation strategies, such as spatial transformations, to enhance model robustness and achieve consistent performance across diverse environmental conditions.",
+        "Implemented the solution on embedded hardware using TensorRT optimization techniques, leading to a 50% enhancement in frame processing rate and ensuring realtime applicability."
+      ]
+    }
+  ]
+}

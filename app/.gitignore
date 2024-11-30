@@ -1,0 +1,12 @@
+# Ignore local environment variables
+.env
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+
+# Ignore sensitive credentials
+google-creds.json
+
+# Ignore virtual environment
+venv/
