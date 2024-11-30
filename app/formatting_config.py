@@ -11,7 +11,7 @@ FONT_SETTINGS = {
     'font': 'Calibri',
     'size': {
         'name': Pt(15),
-        'contact_info' : Pt(11),
+        'contact_info': Pt(11),
         'section_heading': Pt(11),
         'infocard_heading': Pt(11),
         'infocard_subheading': Pt(11),
@@ -19,23 +19,47 @@ FONT_SETTINGS = {
         'skills': Pt(10)
     },
     'style': {
-      'name': {
-        'bold': True,
-        'italic': False
-      },
-      'contact_info' : {
-        'bold': False,
-        'italic': False,
-        'delimiter': ' | '
-      },
-      'section_heading': {
-        'bold': True,
-        'italic': False
-      }
+        'name': {
+            'bold': True,
+            'italic': False
+        },
+        'contact_info': {
+            'bold': False,
+            'italic': False,
+            'delimiter': ' | '
+        },
+        'section_heading': {
+            'bold': True,
+            'italic': False
+        },
+        'infocard_heading_title': {
+            'bold': True,
+            'italic': False
+        },
+        'infocard_heading_timeline': {
+            'bold': False,
+            'italic': False
+        },
+        'infocard_subheading': {
+            'bold': False,
+            'italic': False
+        },
+        'bullet_points': {
+            'bold': False,
+            'italic': False
+        },
+        'skills_category': {
+            'bold': True,
+            'italic': False
+        },
+        'skills_tools': {
+            'bold': False,
+            'italic': True
+        }
     },
     'color': {
         'name': RGBColor(0, 0, 0),
-        'contact_info' : RGBColor(0, 0, 0),
+        'contact_info': RGBColor(0, 0, 0),
         'section_heading': RGBColor(0, 0, 0),
         'infocard_heading': RGBColor(0, 0, 0),
         'infocard_subheading': RGBColor(0, 0, 0),
@@ -96,6 +120,16 @@ SPACING_SETTINGS = {
         'before': Pt(0),
         'after': Pt(0),
         'line_spacing': 1
+    },
+    'skills_category': {
+        'before': Pt(0),
+        'after': Pt(0),
+        'line_spacing': 1
+    },
+    'skills_tools': {
+        'before': Pt(0),
+        'after': Pt(0),
+        'line_spacing': 1
     }
 }
 
@@ -108,6 +142,8 @@ ALIGNMENT_SETTINGS = {
     'infocard_subheading': WD_PARAGRAPH_ALIGNMENT.LEFT,
     'skills_table': WD_PARAGRAPH_ALIGNMENT.CENTER,
     'skills': WD_PARAGRAPH_ALIGNMENT.LEFT,
+    'skills_category': WD_PARAGRAPH_ALIGNMENT.LEFT,
+    'skills_tools': WD_PARAGRAPH_ALIGNMENT.LEFT,
     'bullet_points': WD_PARAGRAPH_ALIGNMENT.LEFT,
 }
 
@@ -116,7 +152,7 @@ INDENTATION_SETTINGS = {
         'left': int(0.25 * INCH_TO_EMU),
         'right': 0,
         'first_line': int(-0.15 * INCH_TO_EMU)
-  }
+    }
 }
 
 TABLE_SETTINGS = {
@@ -129,3 +165,5 @@ TABLE_SETTINGS = {
         'row_height': int(0.15)
     }
 }
+
+HYPERLINKS = ['linkedin', 'github']

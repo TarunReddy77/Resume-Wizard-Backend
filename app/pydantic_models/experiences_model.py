@@ -1,85 +1,71 @@
-from pydantic import BaseModel, Field, field_validator
-from typing import List, Optional
+from my_content.experience import experiences
+
+from typing import Optional, List
+from pydantic import BaseModel, Field
+from typing_extensions import Literal
 
 
-class ExperienceTitleContent(BaseModel):
-    text: str = Field(
+class TitleContents(BaseModel):
+    type: Literal['experience'] = Field(
         ...,
-        description="The text content of the title of the experience, representing the company name followed by the "
-                    "job title.",
-        example="Infosys, AI Engineer"
+        description="The type of the entry, always set to 'experience'.",
+        example="experience"
     )
-    styles: List[str] = Field(
+    company: str = Field(
         ...,
-        description="List of styles applied to the text. Styles should belong to the list - ['bold', 'italic']",
-        example=["bold"]
+        description="The name of the company or organization.",
+        example="Infosys"
+    )
+    role: str = Field(
+        ...,
+        description="The job role or position held.",
+        example="Specialist Programmer – Full Stack Developer"
+    )
+    location: str = Field(
+        ...,
+        description="The location of the company or where the job was based.",
+        example="Bangalore, India"
+    )
+    additional_info: Optional[str] = Field(
+        ...,  # Changed from "" to None
+        description="Any additional information related to the experience (optional).",
+        example="Worked on a high-impact project for a global client"
     )
 
-
-class ExperienceBulletPoint(BaseModel):
-    content: List[ExperienceTitleContent] = Field(
-        ...,
-        description="List of content objects representing each bullet point. Each bullet point can contain multiple "
-                    "styled text segments.",
-        example=[
-            {
-                "text": "Led a team of 10+ engineers in developing AI solutions for healthcare applications, resulting in a 20% improvement in patient diagnosis accuracy.",
-                "styles": []
-            },
-            {
-                "text": "Spearheaded the integration of AI-driven chatbots for customer support, reducing response time by 50% and improving customer satisfaction by 30%.",
-                "styles": []
-            }
-        ]
-    )
+    class Config:
+        extra = 'forbid'
 
 
 class Experience(BaseModel):
-    title_contents: List[ExperienceTitleContent] = Field(
+    title_contents: TitleContents = Field(
         ...,
-        description="A list of title content objects. This usually contains the main job title and any additional "
-                    "styled text, such as company name.",
+        description="Details about the company's name, role, location, and additional information.",
+        example={
+            "type": "experience",
+            "company": "Infosys",
+            "role": "Specialist Programmer – Full Stack Developer",
+            "location": "Bangalore, India",
+            "additional_info": "Worked on a high-impact project for a global client"
+        }
+    )
+    subtitle_contents: Optional[str] = Field(
+        ...,
+        description="Subtitle or additional context for the experience (optional). Prefer None.",
+        example=""
+    )
+    timeline: str = Field(
+        ...,
+        description="The time period during which the experience took place. Use only 3 letter abbreviations for month names. For example, Septemember should be written as Sep.",
+        example="Sep 2021 - Jan 2023"
+    )
+    bullet_points: List[str] = Field(
+        ...,
+        description="A list of bullet points summarizing key achievements and tasks in the role.",
         example=[
-            {"text": "Tech Innovations Inc., Lead AI Engineer", "styles": ["bold"]}
+            "Engineered full-stack development for Apple's DevSecOps Portal, integrating new features and resolving existing feature bugs, ensuring user-friendly DevOps automation via Jenkins.",
+            "Designed and programmed responsive web interfaces leveraging HTML, CSS, and Angular on the frontend, and executed database calls and REST API integration leveraging Spring Boot framework on the backend."
         ]
     )
-    subtitle_contents: Optional[List[ExperienceTitleContent]] = Field(
-        ...,
-        description="A list of subtitle content objects. This field is optional and can contain styled text such as "
-                    "location or department.",
-        example=[
-            {"text": "San Francisco, CA", "styles": []}
-        ]
-    )
-    timeline: List[str] = Field(
-        ...,
-        description="A list containing the start and end dates or duration of the experience. The month names should "
-                    "be restricted to 3 letters. For eaxmaple, 'January' should be 'Jan'",
-        example=["Jan 2022 - May 2023"]
-    )
-    bullet_points: List[ExperienceBulletPoint] = Field(
-        ...,
-        description="A list of bullet points, where each bullet point contains styled text segments that describe key "
-                    "achievements and responsibilities. There should be exactly 3 or 4 bullet points.",
-        example=[
-            {
-                "content": [
-                    {
-                        "text": "Led a team of 10+ engineers in developing AI solutions for healthcare applications, resulting in a 20% improvement in patient diagnosis accuracy.",
-                        "styles": []},
-                    {
-                        "text": "Spearheaded the integration of AI-driven chatbots for customer support, reducing response time by 50% and improving customer satisfaction by 30%.",
-                        "styles": []}
-                ]
-            }
-        ]
-    )
-
-    # @field_validator('bullet_points')
-    # def check_bullet_points_length(cls, v):
-    #     if not 3 <= len(v) <= 4:
-    #         raise ValueError('bullet_points must contain between 3 and 4 items')
-    #     return v
 
 
 class Experiences(BaseModel):
@@ -87,29 +73,5 @@ class Experiences(BaseModel):
         ...,
         description="A list of Experience objects representing all the work experiences to be included in the resume."
                     "There should be exactly 2 such experiences.",
-        example=[
-            {
-                "title_contents": [
-                    {"text": "Tech Innovations Inc., Lead AI Engineer, ", "styles": ["bold"]}
-                ],
-                "subtitle_contents": [
-                    {"text": "San Francisco, CA", "styles": []}
-                ],
-                "timeline": ["Jan 2022 - Aug 2023"],
-                "bullet_points": [
-                    {
-                        "content": [
-                            {"text": "Led a team of 10+ engineers in developing AI solutions...", "styles": []},
-                            {"text": "Spearheaded the integration of AI-driven chatbots...", "styles": []}
-                        ]
-                    }
-                ]
-            }
-        ]
+        example=experiences
     )
-
-    # @field_validator('experiences')
-    # def check_experiences_length(cls, v):
-    #     if len(v) != 3:
-    #         raise ValueError('Exactly 3 experiences are required')
-    #     return v

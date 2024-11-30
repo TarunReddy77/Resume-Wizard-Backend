@@ -4,6 +4,11 @@ import os
 import yaml
 from dotenv import load_dotenv
 
+import logging
+import logging_config  # This ensures that the logging is configured as per logging_config.py
+
+logger = logging.getLogger("my_app_logger")
+
 # Get the directory of the current script
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -16,12 +21,17 @@ with open(config_path) as f:
 
 load_dotenv()
 
+
 openai_api_key = os.getenv("OPENAI_API_KEY")
+if openai_api_key is None:
+    raise ValueError("OPENAI_API_KEY is not set")
+
 client = OpenAI()
+
 model = config['model']
 
 
-def get_content(prompt, job_desc, response_format):
+def generate_resume_content(prompt, job_desc, response_format):
     return client.beta.chat.completions.parse(
         model=model,
         messages=[

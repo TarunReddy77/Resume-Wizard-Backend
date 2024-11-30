@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+pydantic
+python-docx
+openai
+pyyaml
+python-dotenv
+docx2pdf
+pywin32
+langchain-community
+langgraph
+langchain-openai
+tavily-python
+langgraph-checkpoint-sqlite

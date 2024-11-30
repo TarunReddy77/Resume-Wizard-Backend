@@ -1,19 +1,14 @@
 from docx import Document
 from docx.enum.text import WD_LINE_SPACING
 from docx.enum.table import WD_ALIGN_VERTICAL
-from docx.oxml import OxmlElement, ns
+from docx.oxml import ns, OxmlElement
 from docx.oxml.ns import qn
 
 from formatting_config import *
-
 import logging
 
 logger = logging.getLogger("my_app_logger")
-
 doc = None
-
-from docx.oxml import OxmlElement
-from docx.oxml.ns import qn
 
 
 def format_margins(document):
@@ -126,9 +121,11 @@ def add_infocard_heading(title_contents, timeline):
     paragraph_1 = cell_1.paragraphs[0]
 
     if title_contents['type'] == 'project':
-        title = f'{title_contents["domain"]}, {title_contents["name"]}, ({title_contents["additional_info"]})'
+        # title = f'{title_contents["domain"]}, {title_contents["name"]}, ({title_contents["additional_info"]})'
+        title = f'{title_contents["domain"]}, {title_contents["name"]}'  # Without additional info
     elif title_contents['type'] == 'experience':
-        title = f'{title_contents["company"]}, {title_contents["role"]}, {title_contents["location"]}, ({title_contents["additional_info"]})'
+        # title = f'{title_contents["company"]}, {title_contents["role"]}, {title_contents["location"]}, ({title_contents["additional_info"]})'
+        title = f'{title_contents["company"]}, {title_contents["role"]}, {title_contents["location"]}'  # Without additional info
     elif title_contents['type'] == 'education':
         title = f'{title_contents["university"]}, {title_contents["location"]}'
 
@@ -277,9 +274,9 @@ def create_document(resume_contents):
     add_section('EDUCATION', resume_contents['educations'])
     logger.info('added educations')
     # add_section('SKILLS', resume_contents['skills'], type='table')
-    add_section('SKILLS', resume_contents['skills'], type='passage')
+    # add_section('SKILLS', resume_contents['skills'], type='passage')
     logger.info('added skills')
-    add_section('EXPERIENCE', resume_contents['experiences'])
+    add_section('WORK EXPERIENCE', resume_contents['experiences'])
     logger.info('added experience')
     add_section('PROJECTS', resume_contents['projects'])
     logger.info('added proj')
