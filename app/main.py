@@ -6,9 +6,12 @@ import subprocess
 import json
 import traceback
 import logging
+import os
 
-from resume_creation import get_resume_contents, generate_word_doc, enhance_bullet_point, enhance_experience, enhance_project
-from pydantic_models.schemas import JobDescription, GenerateDocumentRequest, EnhanceBulletPointRequest, EnhanceExperienceRequest, EnhanceProjectRequest
+from resume_creation import get_resume_contents, generate_word_doc, enhance_bullet_point, enhance_experience, \
+    enhance_project
+from pydantic_models.schemas import JobDescription, GenerateDocumentRequest, EnhanceBulletPointRequest, \
+    EnhanceExperienceRequest, EnhanceProjectRequest
 
 logger = logging.getLogger("my_app_logger")
 app = FastAPI()
@@ -45,17 +48,28 @@ async def craft_resume(job_desc: JobDescription):
 @app.post("/generate-document/")
 async def generate_document(request: GenerateDocumentRequest):
     try:
+        logger.info(request.resume_contents['experiences'])
         word_path = generate_word_doc(request.resume_contents)
         if request.doc_type == "docx":
             return FileResponse(word_path,
                                 media_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                                 filename="resume.docx")
         if request.doc_type == 'pdf':
+            pdf_dir = os.path.dirname(word_path)  # Get the directory of the Word file
             pdf_path = word_path.replace('.docx', '.pdf')
-            subprocess.run(["docx2pdf", word_path, pdf_path], check=True)
+            libreoffice_path = r"C:\Program Files (x86)\LibreOffice\program\soffice.exe"
+
+            subprocess.run([
+                libreoffice_path, '--headless', '--convert-to', 'pdf',
+                word_path, '--outdir', pdf_dir
+            ], check=True)  # run with libreoffice
+
+            # subprocess.run(["docx2pdf", word_path, pdf_path], check=True)  # run with pywin32
+
             return FileResponse(pdf_path,
                                 media_type='application/pdf',
                                 filename="resume.pdf")
+
     except Exception as e:
         tb_str = ''.join(traceback.format_exception(type(e), e, e.__traceback__))
         logger.error(tb_str)

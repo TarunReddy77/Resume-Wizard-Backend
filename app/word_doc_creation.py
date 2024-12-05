@@ -277,7 +277,7 @@ def create_document(resume_contents):
     # add_section('SKILLS', resume_contents['skills'], type='passage')
     logger.info('added skills')
     add_section('WORK EXPERIENCE', resume_contents['experiences'])
-    logger.info('added experience')
+    logger.info(f'added experience - {resume_contents['experiences']}')
     add_section('PROJECTS', resume_contents['projects'])
     logger.info('added proj')
 

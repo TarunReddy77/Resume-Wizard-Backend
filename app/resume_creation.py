@@ -47,11 +47,14 @@ def get_resume_contents(job_desc):
 
 def generate_word_doc(resume_contents):
     word_doc = create_document(resume_contents)
-    logger.info('doc created')
+    logger.info('word doc created')
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
     resume_path = os.path.join(current_dir, 'resumes', 'resume.docx')
+    if os.path.exists(resume_path):
+        os.remove(resume_path)
     word_doc.save(resume_path)
+    logger.info('word doc saved')
     return resume_path
 
 

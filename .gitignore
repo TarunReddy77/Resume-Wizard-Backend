@@ -22,6 +22,9 @@ build/
 # PyCharm specific
 .idea/
 
+# Keypair
+*.pem
+
 # Docker
 *.pid
 *.swp
