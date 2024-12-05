@@ -7,6 +7,7 @@ import json
 import traceback
 import logging
 import os
+import sys
 
 from resume_creation import get_resume_contents, generate_word_doc, enhance_bullet_point, enhance_experience, \
     enhance_project
@@ -48,7 +49,6 @@ async def craft_resume(job_desc: JobDescription):
 @app.post("/generate-document/")
 async def generate_document(request: GenerateDocumentRequest):
     try:
-        logger.info(request.resume_contents['experiences'])
         word_path = generate_word_doc(request.resume_contents)
         if request.doc_type == "docx":
             return FileResponse(word_path,
@@ -57,7 +57,11 @@ async def generate_document(request: GenerateDocumentRequest):
         if request.doc_type == 'pdf':
             pdf_dir = os.path.dirname(word_path)  # Get the directory of the Word file
             pdf_path = word_path.replace('.docx', '.pdf')
-            libreoffice_path = r"C:\Program Files (x86)\LibreOffice\program\soffice.exe"
+
+            if sys.platform == "win32":
+                libreoffice_path = r"C:\Program Files (x86)\LibreOffice\program\soffice.exe"
+            else:
+                libreoffice_path = "libreoffice"
 
             subprocess.run([
                 libreoffice_path, '--headless', '--convert-to', 'pdf',
